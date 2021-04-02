@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { moduleMetadata } from '@storybook/angular';
 import { Story, Meta } from '@storybook/angular/types-6-0';
-import { MAlertComponent } from './m-alert.component';
+import { AlertObj, MAlertComponent, Alert } from './m-alert.component';
 
 export default {
   title: 'Atoms/MAlert',
@@ -22,10 +22,13 @@ const Template: Story<MAlertComponent> = (args: MAlertComponent) => ({
 });
 
 export const Warning = Template.bind({});
-Warning.args = {
-  // alert: {
-  //   type: 'warning',
-  //   dismissible: true,
-  //   text: 'testo da stampare nel messaggio',
-  // },
-};
+
+export const Danger = Template.bind({});
+const alertDanger: Alert = new AlertObj();
+alertDanger.type = 'danger';
+Danger.args = { alert: alertDanger };
+
+export const Success = Template.bind({});
+const alertSuccess: Alert = new AlertObj();
+alertSuccess.type = 'success';
+Success.args = { alert: alertSuccess };
